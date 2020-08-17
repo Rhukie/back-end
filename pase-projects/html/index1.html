@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="ctn">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" value="" id="fname"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" value="" id="lname"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" value="" id="email"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" value="" id="password"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Reset" id="rst"></td>
+                <td><input type="button" value="Submit" id="sbmt"></td>
+            </tr>
+        </table>
+        <table>
+            <tr id="tbl">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </table>
+        </div>
+    </body>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        // // dom api
+        // document.querySelector('#smt').addEventListener('click', () => {
+        //     let user = {}
+        //     user.email = document.querySelector('#email').value
+        //     user.password = document.querySelector('#password').value
+        //     console.log(user)
+        // })
+        //  jquery api
+        // function for reseting user input
+        let reset = () => {
+            $('#fname').val('');
+            $('#lname').val('');
+            $('#email').val('');
+            $('#password').val('')
+        }
+        // clear user input
+        $('#rst').on('click', () => {
+           reset();
+        })
+        // sending request to register user
+        $('#sbmt').on('click', () => {
+            let user = {};
+            user.firstName = $('#fname').val();
+            user.lastName = $('#lname').val();
+            user.email = $('#email').val();
+            user.password = $('#password').val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/register',
+                data: user,
+                success: (res) => {
+                    reset();
+                    let tbl = document.querySelector('#tbl');
+                    let tr = tbl.appendChild(document.createElement('tr'));
+                    tr.appendChild(document.createElement('td')).innerHTML = res.data.firstName
+                    tr.appendChild(document.createElement('td')).innerHTML = res.data.lastName
+                    tr.appendChild(document.createElement('td')).innerHTML = res.data.email
+                    tr.appendChild(document.createElement('td')).innerHTML = "<button>Edit</button><button>Delete</button>"
+                }
+            })
+        })
+
+        // $('#rst').on('click', () => {
+        //     $('#fname').val('');
+        //     $('#lname').val('');
+        //     $('#email').val('');
+        //     $('#password').val('')
+        // })
+
+        // // sending request to register user
+        // $('#sbmt').on('click', () => {
+        //     let user = {};
+        //     user.firstName = $('#fname').val();
+        //     user.lastName = $('#lname').val();
+        //     user.email = $('#email').val();
+        //     user.password = $('#password').val();
+        //     console.log(user)
+        // })
+    </script>
+</html>

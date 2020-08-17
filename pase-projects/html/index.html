@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <input type="text" id="fruit" value="">
+            <input type="button" name="" id="btn" value="Add">
+            <ol id="list"></ol>
+        </div>
+        <!-- <div class="par">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptate 
+        inventore voluptas a veritatis corporis error perspiciatis. Voluptatibus sint
+         error nostrum ipsam ab repellat excepturi similique exercitationem, aut placeat labore?
+
+        </div>
+        <div class="par">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum molestiae dolores
+             quae possimus soluta culpa quaerat delectus est repellendus, libero similique 
+            temporibus enim. Voluptatum quis animi cumque tempora id!
+        </div> -->
+    </body>
+    <script>
+        document.querySelector('#btn').addEventListener('click', () => {
+            let val = document.querySelector("#fruit").value
+            let ls = document.querySelector('#list')
+            let li = document.createElement('li')
+            if(val !== ''){
+                ls.appendChild(li).innerHTML = val
+                document.querySelector('#fruit').value = ""
+            }
+        })
+        // document.title = 'first JS'
+        // let val = ''
+        // document.querySelector('#fruit').addEventListener('input', (event) => {
+        //     val = event.target.value
+        // });
+        // document.querySelector('#btn').addEventListener('click', () => {
+        //     let ls = document.querySelector('#list')
+        //     let li = document.createElement('li')
+        //     if(val !== ''){
+        //     ls.appendChild(li).innerHTML = val
+        //     document.querySelector('#fruit').value = ""   avoids repeatition
+        //     }
+        // })
+    // let elem = document.getElementById('par');
+    // elem.style.color= 'green'
+    // elem.style.border = '1px solid gray'
+    // elem.style.padding = '10px'
+    // elem.style.borderRadius = '5px'
+    //  document.getElementById('par').style.cssText = `color: #fff;
+    //  border:1px solid gray;
+    //  padding: 10px;
+    //  border-radius: 5px;
+    //  background: #000;
+    //  font-size: 20px;`
+    // let elems = document.getElementsByClassName('par')
+    //     for(let index in elems){
+    //         elems[index].style.color = 'green'
+    //         elems[index].style.padding = '5px'
+    //         elems[index].style.border = '1px solid gray'
+    //         elems[index].style.marginBottom = '10px'
+    //         elems[index].style.borderRadius = '5px'     ---for in: "affects everything"
+    //     }
+    // let elems = document.querySelectorAll('div')
+    //     for(let elem of elems){
+    //         elem.style.color = 'red'
+    //         elem.style.border = '1px solid gray'          --- querySelectorAll: "affects everything"
+    //     }  
+
+    // let elems = document.querySelectorAll('.par');
+    //     elems.forEach((elem) => {
+    //         elem.style.color = 'green'
+    //         elem.style.border = '1px solid gray'
+    //         elem.style.padding = '10px'
+    //         elem.style.borderRadius = '5px'
+    //         elem.style.marginBottom = '30px'
+    // //     })   
+    // let getDate = () => {
+    //         setInterval(() => {
+    //             let date = new Date()
+    //             document.querySelector('#dt').innerHTML = date       ----for printing date
+    //         }, 1000)
+    //     }
+    //     let elem = document.querySelector('#btn');
+    //     elem.addEventListener('click', getDate)
+    //         NB: BOTH ARE USED FOR CLASSES
+
+    </script>
+</html>
